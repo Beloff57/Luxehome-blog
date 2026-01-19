@@ -1,0 +1,656 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nothing+You+Could+Do&display=swap');
+
+:root {
+    --montserrat: "Montserrat", sans-serif;
+    --nycd: "Nothing You Could Do", sans-serif;
+}
+
+body {
+    margin: 0;
+  padding: 0;
+    background-color: #FFFFFF;
+    overflow-x: hidden;
+    font-family: var(--montserrat);
+    margin-left: 2.13vw;
+}
+
+.articles-zag {
+    display: flex;
+    align-items: flex-end;
+    gap: 1vw;
+    margin-bottom: 2.97vw;
+}
+
+.articles-zag h1 {
+    font-size: 3vw;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    color: #000000;
+    margin: 0;
+}
+
+.art-kol {
+    font-size: 0.88vw;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: #717171;
+    margin-bottom: 0.5vw;
+}
+
+.articles-sort-btn {
+  display: none;
+}
+
+.ac-zag {
+    font-size: 1.5vw;
+    font-weight: 500;
+    letter-spacing: -0.03em;
+    margin-bottom: 2vw;
+    margin-top: 0;
+}
+
+
+.art-nav {
+  margin-bottom: 2.5vw;
+  display: flex;
+  flex-wrap: wrap;              /* важно: 7 категорий почти всегда требуют переноса */
+  gap: 1.51vw;
+  row-gap: 0.9vw;               /* расстояние между строками при переносе */
+  font-size: 1vw;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+}
+
+/* Ссылка-категория */
+.art-nav__item {
+  position: relative;
+  color: #6C6C6C;
+  cursor: pointer;
+  transition: color 0.35s ease;
+  text-decoration: none;
+  display: inline-flex;         /* чтобы счетчик был рядом и не ломал underline */
+  align-items: baseline;
+  gap: 0.35vw;                  /* расстояние между названием и (count) */
+  line-height: 1.15;
+  white-space: nowrap;          /* чтобы "Рулонные шторы (3)" не разваливались */
+}
+
+/* Счётчик (12) */
+.art-nav__count {
+  color: inherit;               /* наследует цвет, чтобы active/hover работал красиво */
+}
+
+/* Подчеркивание (анимация) */
+.art-nav__item::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -0.25em;
+  width: 100%;
+  height: 0.06vw;
+  background-color: #000000;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.8s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* hover */
+.art-nav__item:hover {
+  color: #000000;
+}
+.art-nav__item:hover::after {
+  transform: scaleX(1);
+}
+
+/* active */
+.art-nav__item.is-active {
+  color: #000000;
+}
+.art-nav__item.is-active::after {
+  transform: scaleX(1);
+}
+
+/* (опционально) если хочешь чуть сильнее выделить активный счетчик */
+.art-nav__item.is-active .art-nav__count {
+  font-weight: 500;
+}
+
+
+.ac-line-1{
+    position: absolute;
+    margin-top: 0vw;
+    margin-bottom: 1vw;
+    width: 97.5%;
+    height: 1px;
+    background-color: #3E3E3E;
+    overflow: hidden;
+}
+
+.ac-art-line {
+  margin-top: 1vw;
+    position: relative;
+    width: 97.5%;
+    height: 1px;
+    background-color: #3E3E3E;
+    overflow: hidden;
+}
+
+.ac-art-line-2 {
+  margin-top: 3vw;
+    position: relative;
+    width: 97.5%;
+    height: 1px;
+    background-color: #3E3E3E;
+    overflow: hidden;
+}
+
+.ac-h-grow {
+    position: absolute;
+    top: 0;
+    height: 1px;
+    background-color: #E7E7E7;
+    width: 0%;
+    transition: width 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.ac-h-grow.left {
+    left: 0;
+}
+
+.ac-h-grow.right {
+    right: 0;
+}
+
+.ac-vertical-line-1 {
+    position: absolute;
+    width: 1px;
+    background-color: #3E3E3E;
+    top: -1.25vw;
+    bottom: -3vw;
+    left: calc(0vw + 48%);
+    margin-left: -0.5px;
+}
+
+.ac-vertical-line-s1 {
+    position: absolute;
+    top: -1.3vw;
+    left: 48%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 0%;
+    background-color: #E7E7E7;
+    transition: height 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.ac-vertical-line-2 {
+    position: absolute;
+    width: 1px;
+    background-color: #3E3E3E;
+    top: -1.25vw;
+    bottom: 0vw;
+    left: calc(0vw + 48%);
+    margin-left: -0.5px;
+}
+
+.ac-vertical-line-s2 {
+    position: absolute;
+    top: -1.3vw;
+    left: 48%;
+    transform: translateX(-50%);
+    width: 1px;
+    height: 0%;
+    background-color: #E7E7E7;
+    transition: height 0.35s cubic-bezier(.22,.61,.36,1);
+}
+
+.article-content {
+  position: relative;
+    display: flex;
+    height: 18.69vw;
+    gap: 3vw;
+    margin-top: 1.25vw;
+}
+
+.article-st1 {
+  display: flex;
+  gap: 6.5vw;
+}
+
+.article-text {
+  display: flex;
+  flex-direction: column;
+}
+
+.article-zag {
+  margin-top: 1vw;
+    margin-bottom: 7.9vw;
+    font-size: 1.5vw;
+    width: 19vw;
+}
+
+.article-opis {
+  margin: 0;
+  font-size: 1.13vw;
+  width: 20vw;
+}
+
+.article-foto {
+  z-index: 11;
+}
+
+.ac-st1 {
+  width: 18.5vw;
+  height: 18.69vw;
+}
+
+.teg-article {
+  width: 3.1vw;
+  font-size: 1vw;
+  border: 1px solid #000000;
+  padding: 0.4vw 1vw;
+  border-radius: 1.47vw;
+}
+
+.article-meta {
+  display: flex;
+  align-items: center;
+  gap: 2vw;
+}
+
+.article-meta-info {
+  display: flex;
+  align-items: center;
+  font-size: 0.88vw;
+  color: #D8D8D8;
+  font-weight: 400;
+}
+
+.views-icon,
+.views-icon-2 {
+    width: 0.63vw;
+    height: 0.5vw;
+    padding-right: 0.3vw;
+}
+
+.article-views {
+  display: flex;
+  align-items: center;
+  gap: 0.35vw;
+  padding-right: 1vw;
+}
+
+.article-date {
+  white-space: nowrap;
+}
+
+.article-views-2 {
+    color: #595959;
+  display: flex;
+  align-items: center;
+  gap: 0.35vw;
+  padding-right: 1vw;
+}
+
+.article-date-2 {
+    color: #595959;
+  white-space: nowrap;
+}
+
+.article-content-2 {
+  position: relative;
+    display: flex;
+    height: 100%;
+    gap: 3vw;
+    margin-top: 1.25vw;
+}
+
+.article-st2 {
+  display: flex;
+  gap: 7.5vw;
+}
+
+.teg-article2 {
+    display: flex;
+    gap: 0.5vw;
+}
+
+.teg-article2 p {
+    font-size: 0.88vw;
+    color: #595959;
+}
+
+.article-zag-2 {
+  margin-top: 1vw;
+    margin-bottom: 3.5vw;
+    font-size: 2.19vw;
+    font-weight: 600;
+    width: 42vw;
+    line-height: 114.2%;
+    letter-spacing: -0.02em;
+}
+
+.article-opis-2 {
+  margin: 0;
+  font-size: 1.13vw;
+  width: 40vw;
+  font-weight: 400;
+  line-height: 148%;
+  letter-spacing: -0.04em;
+}
+
+.ac-st2 {
+  width: 41.5vw;
+  height: 26.44vw;
+}
+
+
+/* ==================================
+   MOBILE — Articles (exact layout)
+   ================================== */
+@media (max-width: 440px) {
+
+  body {
+    margin-left: 0;
+  }
+
+  .articles-page {
+    padding: 0 4.5vw;
+  }
+
+  /* ===== Заголовок ===== */
+  .articles-zag {
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0;
+    margin-bottom: 6.82vw;
+    padding-bottom: 3.64vw;
+  }
+
+  .articles-zag::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #E5E5E5;
+  }
+
+  .articles-zag h1 {
+    font-size: 8.2vw;
+    padding-left: 5vw;
+  }
+
+  .art-kol {
+    display: none;
+  }
+
+   /* кнопка сортировки */
+  .articles-sort-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 2vw;
+
+    background: transparent;
+    border: none;
+    padding: 0;
+
+    font-family: var(--montserrat);
+    font-size: 3.6vw;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: #717171;
+
+    cursor: pointer;
+  }
+
+  .articles-sort-btn::after {
+    content: "";
+    width: 3vw;
+    height: 3vw;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+  /* ===== Категории ===== */
+  .ac-zag {
+    display: none;
+  }
+
+  .art-nav {
+    display: flex;
+    flex-wrap: nowrap;              /* ❗ одна строка */
+    overflow-x: auto;               /* ❗ горизонтальный скролл */
+    overflow-y: hidden;
+    gap: 5vw;
+
+    padding-bottom: 2vw;
+    margin-bottom: 6vw;
+
+    font-size: 3.4vw;
+
+    -webkit-overflow-scrolling: touch; /* плавный свайп iOS */
+    scroll-behavior: smooth;
+  }
+
+  /* скрываем скроллбар */
+  .art-nav::-webkit-scrollbar {
+    display: none;
+  }
+
+  .art-nav {
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* элементы не сжимаются */
+  .art-nav__item,
+  .art-nav span {
+    white-space: nowrap;
+    flex: 0 0 auto;
+  }
+
+  /* underline аккуратнее для мобилки */
+  .art-nav span::after {
+    height: 0.5vw;
+    bottom: -0.6vw;
+  }
+
+
+  /* ===============================
+   MOBILE — линии
+   =============================== */
+
+/* ❌ вертикальные — скрываем */
+.ac-vertical-line-1,
+.ac-vertical-line-2,
+.ac-vertical-line-s1,
+.ac-vertical-line-s2 {
+  display: none;
+}
+
+/* ✅ горизонтальные — возвращаем */
+.ac-line-1,
+.ac-art-line,
+.ac-art-line-2 {
+  display: block;
+  width: 100%;
+  margin: 0vw;
+}
+
+
+  /* ==================================
+     Маленькие карточки
+     ================================== */
+
+  .article-content {
+    flex-direction: column;
+    height: auto;
+    gap: 5vw;
+    margin-top: 5vw;
+  }
+
+  .article-st1 {
+    display: flex;
+    align-items: center;
+    gap: 4vw;
+    position: relative;
+    padding-bottom: 5vw;
+    padding-left: 5vw;
+        padding-right: 5vw;
+  }
+
+  .article-st1::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #E5E5E5;
+  }
+
+  /* большая карточка */
+  .article-st2 {
+    position: relative;
+    padding-bottom: 6vw;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw;
+    padding-left: 5vw;
+  }
+
+  .article-st2 .article-text {
+    display: contents;
+  }
+
+  /* ===== порядок элементов ===== */
+
+  /* 1. мета */
+  .article-st2 .article-meta {
+    order: 1;
+    margin-bottom: 3vw;
+  }
+
+  /* 2. картинка */
+  .article-st2 .article-foto {
+    order: 2;
+  }
+
+  /* 3. заголовок */
+  .article-st2 .article-zag-2 {
+    order: 3;
+    font-size: 3.64vw;
+    width: 91%;
+    margin: 3vw 0;
+  }
+
+  /* 4. описание */
+  .article-st2 .article-opis-2 {
+    order: 4;
+    font-size: 2.73vw;
+    width: 93%;
+    line-height: 150%;
+  }
+
+  /* картинка */
+  .article-st2 .ac-st2 {
+    width: 87.73vw;
+    height: auto;
+    display: block;
+  }
+
+  .article-st2::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #E5E5E5;
+  }
+
+  /* последняя карточка — без линии */
+  .article-st1:last-child::after,
+  .article-st2:last-child::after {
+    display: none;
+  }
+
+  /* 🔁 ШАХМАТКА (исправлено) */
+.article-st1:nth-of-type(odd) {
+  flex-direction: row;          /* картинка СЛЕВА */
+}
+
+.article-st1:nth-of-type(even) {
+  flex-direction: row-reverse;  /* картинка СПРАВА */
+}
+
+
+  .article-text {
+    width: 100%;
+  }
+
+  .article-meta {
+    gap: 3vw;
+    margin-bottom: 2vw;
+  }
+
+  .teg-article {
+    width: 8.3vw;
+    font-size: 2.73vw;
+    padding: 1.1vw 3vw;
+    border-radius: 6vw;
+  }
+
+  .article-meta-info {
+    font-size: 2.73vw;
+  }
+
+  .article-zag {
+    font-size: 3.64vw;
+    width: 100%;
+    margin: 0 0 2.5vw;
+  }
+
+  .article-opis {
+    font-size: 2.73vw;
+    width: 97%;
+    line-height: 145%;
+  }
+
+  .ac-st1 {
+    width: 34.55vw;
+    height: 34.55vw;
+    object-fit: cover;
+  }
+
+  /* ==================================
+     Большая карточка
+     ================================== */
+
+  .article-content-2 {
+    flex-direction: column;
+    margin-top: 8vw;
+  }
+
+  .article-st2 {
+    flex-direction: column;
+    gap: 4.5vw;
+  }
+
+  .article-zag-2 {
+    font-size: 3.64vw;
+    width: 100%;
+    margin-bottom: 3vw;
+  }
+
+  .article-opis-2 {
+    font-size: 3.7vw;
+    width: 100%;
+    line-height: 150%;
+  }
+
+
+}
